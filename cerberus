@@ -1,0 +1,31 @@
+#!/bin/bash
+INSTALL_DIR="/home/cerberusmrxi/Desktop/new project/cerberus-sentinel"
+if [ -f "$INSTALL_DIR/venv/bin/activate" ]; then
+    source "$INSTALL_DIR/venv/bin/activate"
+fi
+export PYTHONPATH="$INSTALL_DIR"
+
+if [ "$1" == "--gui" ]; then
+    echo -e "\033[0;32m[*] Launching Cerberus Web Interface...\033[0m"
+    
+    # Start Backend
+    cd "$INSTALL_DIR/web/backend"
+    python3 manage.py runserver 0.0.0.0:8000 > /dev/null 2>&1 &
+    BACKEND_PID=$!
+    
+    # Start Frontend
+    cd "$INSTALL_DIR/web/frontend"
+    npm run dev > /dev/null 2>&1 &
+    FRONTEND_PID=$!
+    
+    echo -e "\033[0;34m[*] Backend running (PID: $BACKEND_PID)\033[0m"
+    echo -e "\033[0;34m[*] Frontend running (PID: $FRONTEND_PID)\033[0m"
+    echo -e "\033[0;32m[+] Dashboard available at http://localhost:5173\033[0m"
+    echo -e "\033[0;34m[*] Press Ctrl+C to stop servers\033[0m"
+    
+    trap "kill $BACKEND_PID $FRONTEND_PID; exit" SIGINT
+    wait
+else
+    # Run CLI
+    python3 "$INSTALL_DIR/cli/main.py" "$@"
+fi

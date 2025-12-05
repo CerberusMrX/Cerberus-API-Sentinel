@@ -1,0 +1,25 @@
+# Core Engine
+requests>=2.31.0
+scapy>=2.5.0
+sqlalchemy>=2.0.0
+beautifulsoup4>=4.12.0
+pyyaml>=6.0
+python-dotenv>=1.0.0
+colorama>=0.4.6
+tqdm>=4.66.0
+channels>=4.0.0
+daphne>=4.0.0
+
+# Web Backend
+django>=5.0.0
+djangorestframework>=3.14.0
+django-cors-headers>=4.3.0
+celery>=5.3.0
+redis>=5.0.0
+psycopg2-binary>=2.9.0
+gunicorn>=21.2.0
+whitenoise>=6.6.0
+
+# Testing
+pytest>=7.4.0
+pytest-django>=4.7.0
