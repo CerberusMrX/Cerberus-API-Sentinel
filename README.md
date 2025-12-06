@@ -529,8 +529,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 **Sudeepa Wanigarathna**
 
 - GitHub: [@CerberusMrX](https://github.com/CerberusMrX)
-- LinkedIn: [Your LinkedIn]
-- Website: [Your Website]
 
 ---
 
